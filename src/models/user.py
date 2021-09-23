@@ -11,14 +11,12 @@ class User(db.Model):
     username = db.Column(db.String(30), unique=True, nullable=False)
     email = db.Column(db.String(254), unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
-    profession = db.Column(db.String(30), nullable=True)
 
 
     def __init__(self, **kwargs):
         self.username = kwargs["username"]
         self.email = kwargs["email"]
         self.password = kwargs["password"]
-        self.profession = kwargs.get("profession")
         
     def json(self):
         return {
@@ -26,7 +24,6 @@ class User(db.Model):
             'created_at': self.created_at.isoformat(),
             'username': self.username,
             'email': self.email, 
-            'profession': self.profession
         }
     
     def hash_password(self):
@@ -59,7 +56,6 @@ class User(db.Model):
         self.username = data["username"]
         self.email = data["email"]
         self.password = data["password"]
-        self.profession = data.get("profession")
         db.session.commit()
 
     def delete(self):
