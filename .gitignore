@@ -1,4 +1,7 @@
 .DS_Store
+.ini
+wsgi.py
+.sock
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
