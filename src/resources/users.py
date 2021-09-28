@@ -10,11 +10,11 @@ class Users(Resource):
     @jwt_required()
     def get(self):
         user_id = get_jwt_identity()
-        username = User.find_by_id(user_id).username
-        if (username == "shawnli789"):
-            return {'total users': len(User.find_all())}, 200
+        user_role = User.find_by_id(user_id).role
+        if (user_role == "admin"):
+            return {'users': len(User.find_all())}, 200
         else:
-            return {'error message': 'unauthorized'}, 401
+            return {'error': 'unauthorized'}, 401
 
 
     def post(self):

@@ -23,6 +23,11 @@ if app.config["ENV"] == "production":
 else:
     app.config["SQLALCHEMY_DATABASE_URI"] = app.config["DEV_DB"]
 
+# @app.before_first_request
+# def create_table():
+#     db.create_all()
+
+
 @app.after_request
 def add_headers(response):
     response.headers.add('Access-Control-Allow-Origin', '*')

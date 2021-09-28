@@ -11,12 +11,14 @@ class User(db.Model):
     username = db.Column(db.String(30), unique=True, nullable=False)
     email = db.Column(db.String(254), unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
+    role = db.Column(db.String(128), nullable=True)
 
 
     def __init__(self, **kwargs):
         self.username = kwargs["username"]
         self.email = kwargs["email"]
         self.password = kwargs["password"]
+        self.role = kwargs.get("role")
         
     def json(self):
         return {
@@ -24,6 +26,7 @@ class User(db.Model):
             'created_at': self.created_at.isoformat(),
             'username': self.username,
             'email': self.email, 
+            'role': self.role
         }
     
     def hash_password(self):
