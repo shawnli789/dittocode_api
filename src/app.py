@@ -41,7 +41,7 @@ api.add_resource(Problem, '/problems/<int:problem_id>')
 api.add_resource(Problems, '/problems/')
 api.add_resource(Sessions, '/sessions/')
 api.add_resource(ProblemValidator, '/problem-validator/')
-api.add_resource(HealthCheck, '/health-check/')
+api.add_resource(HealthCheck, '/')
 
 
 if __name__ == '__main__':
