@@ -3,6 +3,8 @@ from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from flask_restful import Api
 from resources.healthCheck import HealthCheck
+from resources.leetcodeProblems import LeetcodeProblems
+from resources.leetcodeProblem import LeetcodeProblem
 from resources.problem import Problem
 from resources.problems import Problems
 from resources.problemValidator import ProblemValidator
@@ -10,6 +12,7 @@ from resources.sessions import Sessions
 from resources.user import User
 from resources.users import Users
 
+ 
 
 app = Flask(__name__)
 app.config.from_envvar('ENV_FILE_LOCATION')
@@ -42,6 +45,8 @@ api.add_resource(Problems, '/problems/')
 api.add_resource(Sessions, '/sessions/')
 api.add_resource(ProblemValidator, '/problem-validator/')
 api.add_resource(HealthCheck, '/')
+api.add_resource(LeetcodeProblems, '/leetcode-problems/')
+api.add_resource(LeetcodeProblem, '/leetcode-problem/<titleSlug>/')
 
 
 if __name__ == '__main__':
