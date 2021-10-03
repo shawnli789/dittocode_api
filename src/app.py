@@ -20,12 +20,6 @@ api = Api(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
-# set the configuration
-if app.config["ENV"] == "production":
-    app.config["SQLALCHEMY_DATABASE_URI"] = app.config["PROD_DB"]
-else:
-    app.config["SQLALCHEMY_DATABASE_URI"] = app.config["DEV_DB"]
-
 # @app.before_first_request
 # def create_table():
 #     db.create_all()

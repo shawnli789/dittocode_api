@@ -7,3 +7,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 ./run.sh
 ```
+
+Additionally you need to create ".env" file under root directory to set up environment variables.
+
